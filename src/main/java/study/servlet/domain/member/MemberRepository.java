@@ -23,10 +23,10 @@ public class MemberRepository {
     private MemberRepository() {
     }
 
-    public Member save(Member memeber) {
-        memeber.setId(sequence++);
-        store.put(memeber.getId(), memeber);
-        return memeber;
+    public Member save(Member member) {
+        member.setId(sequence++);
+        store.put(member.getId(), member);
+        return member;
     }
 
     public Member findById(long id) {
