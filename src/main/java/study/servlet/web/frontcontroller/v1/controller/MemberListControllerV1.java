@@ -1,23 +1,21 @@
-package study.servlet.web.servletmvc;
+package study.servlet.web.frontcontroller.v1.controller;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import study.servlet.domain.member.Member;
 import study.servlet.domain.member.MemberRepository;
+import study.servlet.web.frontcontroller.v1.ControllerV1;
 
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "mvcMemberListServlet", urlPatterns = "/servlet-mvc/members")
-public class MvcMemberListServlet extends HttpServlet {
+public class MemberListControllerV1 implements ControllerV1 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         List<Member> members = memberRepository.findAll();
 
         req.setAttribute("members", members);
